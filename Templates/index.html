@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hex color</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+    <link rel="icon" type="images/favicon.png" href="static/images/favicon.png">
+</head>
+<body>
+    <div class="head_text">
+        <h1>Most 10 common colors in picture.</h1>
+    </div>
+    {% if image: %}
+        <div class="image_container">
+            <img src="static/images/img.png" alt="Image not found" class="rounded" width="800" height="600">
+        </div>
+        <div class="colors">
+            {% for color in hex_list: %}
+                <div class="color_container">
+                    <div class="color_circle" style="background-color: {{color}}"></div>
+                    <h4>{{color}}</h4>
+                </div>
+            {% endfor %}
+        </div>
+    {% else: %}
+        <div class="empty">
+            <h3>Add image.</h3>
+        </div>
+    {%  endif %}
+    <button class="button" type="button">
+        <a href="{{url_for('open_file')}}">
+            Open File
+        </a>
+    </button>
+</body>
+</html>
